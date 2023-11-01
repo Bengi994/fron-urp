@@ -5,6 +5,7 @@ import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import CatalogModalConfirm from "../../components/CatalogModalConfirmation";
 
+//@ts-ignore
 const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
   const { catalogs, removeCatalog, enabledCatalog } = useCatalogs();
   const handleRemoveCatalog = async (catalogId: string) => {

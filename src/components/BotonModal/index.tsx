@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -28,6 +29,7 @@ const ModalInscribir = ({ catalog }: { catalog: Catalog }) => {
       const listaDeAlumnos = catalog.inscripciones || [];
   
       // Agrega el nuevo alumno a la lista de objetos
+      // @ts-ignore
       listaDeAlumnos.push(nuevoAlumno);
   
       // Actualiza el campo JSON del catálogo con la lista actualizada

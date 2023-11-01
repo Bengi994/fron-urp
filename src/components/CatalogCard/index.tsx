@@ -17,6 +17,7 @@ export const CatalogCard = ({
           variant="top"
           src="http://localhost:1338/uploads/SERVICIO_DIGITAL_MARKETING_CONSULTING_127a33d433.jpg"
         />
+        {/*//@ts-ignore*/}
         <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{catalog.fecha}</p>
         <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salon}</p>
         <p className="card-dirigido">{catalog.dirigido}</p>

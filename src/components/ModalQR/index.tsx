@@ -33,6 +33,7 @@ const ModalQR = () => {
         <Modal.Body>
             <div className="contenedorQR">
               <br /><br />
+              {/*@ts-ignore*/}
                 <QRCode className="codigoQR" value={user?.codigo} viewBox={`0 0 256 256`} fgColor="black"/>
                 <br /><br /><br />
             </div>

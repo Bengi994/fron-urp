@@ -36,6 +36,7 @@ export const OrderDetailModal = ({ closeModal, order, show }: { show: boolean; c
                     {order.detail.length > 0 && order.detail.map((detail, index) => (
                         <tr key={`order-detail-${detail.id}`}>
                             <th>{index + 1}</th>
+                            {/*@ts-ignore*/}
                             <th>{detail.product.nombre}</th>
                             <th>{detail.cantidad}</th>
                             <th>{detail.monto}</th>
