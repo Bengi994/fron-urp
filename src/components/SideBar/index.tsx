@@ -42,7 +42,7 @@ export const SideBar = () => {
         </li>
         {
           // ROLE 4 ADMINISTRADOR
-          user?.role.id === 4 && (
+          user?.role.id === 7 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/administracion-salones">
@@ -54,7 +54,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 7 DOCENTE
-          user?.role.id === 1 && (
+          user?.role.id === 3 && (
             <>
             <Accordion defaultActiveKey="0" className="acordeon-confes">
               <Accordion.Item eventKey="0">
@@ -99,7 +99,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 3 ALUMNO
-          user?.role.id === 3 && (
+          user?.role.id === 4 && (
             <>
               <Accordion defaultActiveKey="0" className="acordeon-confes">
                 <Accordion.Item eventKey="0">
