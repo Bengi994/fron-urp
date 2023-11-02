@@ -1,40 +1,45 @@
-import cv2;
-from playsound import playsound
+import cv2
+from pyzbar import pyzbar
 
-bd = cv2.barcode.barcodeDetection()
+def escanear_codigo(frame):
+    codigos_escaneados = pyzbar.decode(frame)
+    for codigo in codigos_escaneados:
+        x, y, w, h = codigo.rect
+        tipo_codigo = codigo.type
+        datos_codigo = codigo.data.decode('utf-8')
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        
+        texto = f'{tipo_codigo}: {datos_codigo}'
+        cv2.putText(frame, texto, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+        
+        return datos_codigo
+    return None
 
-cap = cv2.VideoCapture(0)
+def main():
+    camara = cv2.VideoCapture(0)
+    codigos_almacenados = []
 
-detecciones = {}
+    while True:
+        ret, frame = camara.read()
+        if not ret:
+            continue
 
-while True:
-    ret, frame = cap.read()
-    if ret:
-        (ret_bc,
-        decode,
-        _,
-        puntos) = bd.detectAndDecode(frame)
-        if ret_bc:
-            frame = cv2.polylines(frame,
-            puntos.astype(int),
-            True,
-            (0, 255, 0),
-            3)
-            for codigo, punto in zip(decode, puntos):
-                if codigo in detecciones:
-                    detecciones[codigo] += 1
-                    if detecciones[codigo] >= 30:
-                        print("Deteccion exitosa: ", codigo)
-                        playsound('beep.mp3')
-                        cv2.waitKey(250)
-                        detecciones.clear()
-                    else: detecciones [codigo] = 1
-                    frame = cv2.putText(frame,
-                        codigo,
-                        punto[1].astype(int),
-                        cv2.FONT_HERSHEY_SIMPLEX,
-                        2,
-                        (0, 0, 255),
-                        2,
-                        cv2.LINE_AA)
-    cv2.imshow("Escaner de barras", frame)
+        codigo = escanear_codigo(frame)
+
+        if codigo and codigo not in codigos_almacenados:
+            codigos_almacenados.append(codigo)
+            print(f"Código escaneado: {codigo}")
+
+        cv2.imshow('Escaner de Códigos QR y Barras', frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    camara.release()
+    cv2.destroyAllWindows()
+    print("Códigos escaneados durante la sesión:")
+    for codigo in codigos_almacenados:
+        print(codigo)
+
+if __name__ == "__main__":
+    main()
