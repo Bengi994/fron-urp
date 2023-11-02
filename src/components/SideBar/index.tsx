@@ -54,7 +54,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 7 DOCENTE
-          user?.role.id === 0 && (
+          user?.role.id === 1 && (
             <>
             <Accordion defaultActiveKey="0" className="acordeon-confes">
               <Accordion.Item eventKey="0">
@@ -99,7 +99,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 3 ALUMNO
-          user?.role.id === 1 && (
+          user?.role.id === 3 && (
             <>
               <Accordion defaultActiveKey="0" className="acordeon-confes">
                 <Accordion.Item eventKey="0">
