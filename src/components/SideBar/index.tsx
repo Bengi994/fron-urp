@@ -99,7 +99,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 3 ALUMNO
-          user?.role.id === 2 && (
+          user?.role.id === 1 && (
             <>
               <Accordion defaultActiveKey="0" className="acordeon-confes">
                 <Accordion.Item eventKey="0">
