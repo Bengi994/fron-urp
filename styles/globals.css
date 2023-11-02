@@ -332,7 +332,8 @@ body .form-control:focus {
 
 .cont-img {
     position: relative;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     overflow: hidden;
 }
 
@@ -525,6 +526,7 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100;
 }
 .contenido-modal{
   width: 655px;
@@ -566,7 +568,8 @@ button{
     display: flex;
 }
 .boton-cerrar img{
-    width: 100%;
+    width: 100% !important;
+    height: auto !important;
     rotate: 45deg;
 }
 .contenido{
@@ -587,7 +590,7 @@ button{
     font-size: 16px;
     font-weight: 400;
 }
-.seccion p{
+.seccion  p{
     background-color: #F5F5F5;
     padding: 12px;
     border-radius: 5px;
@@ -603,6 +606,19 @@ button{
 .seccion-botones h5{
     font-size: 16px;
     font-weight: 400;
+}
+.seccion-tema-descripcion{
+    padding: 15px;
+    width: 600px;
+}
+.seccion-tema-descripcion h5{
+    font-size: 16px;
+    font-weight: 400;
+}
+.seccion-tema-descripcion  p{
+    background-color: #F5F5F5;
+    padding: 12px;
+    border-radius: 5px;
 }
 .contenido-modal-confirm{
     width: 450px; 
@@ -625,4 +641,199 @@ button{
 .envio-solicitud-form{
     width: 100%;
     max-width: 350px;
+}
+.header-mis-conferencias{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: #D9D9D9 solid 3px;
+    padding-bottom: 10px;
+}
+.contenido-mis-conferencias{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+.seccion-mis-conferencias{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 341px;
+    height: 360px;
+    margin: 20px;
+    padding-top: 70px;
+    justify-content: space-around;
+    box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.15);
+    position: relative;
+}
+.excepcion{
+    padding-top: 20px !important;
+}
+.seccion-mis-conferencias img{
+    width: 101px;
+    height: 108.84px;
+}
+.seccion-mis-conferencias h1{
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+.seccion-mis-conferencias h2 {
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+}
+.seccion-mis-conferencias a{
+    text-decoration: none;
+    color: #42B247;
+}
+@keyframes progress {
+    0% { --percentage: 0; }
+    100% { --percentage: var(--value); }
+  }
+  
+  @property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  [role="progressbar"] {
+    --percentage: var(--value);
+    --primary: rgb(0,130,58);
+    --secondary: rgb(225,225,225);
+    --size: 250px;
+    height: 150px;
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 2/ 1;
+    border-radius: 50% / 100% 100% 0 0;
+    position:relative;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+    justify-content:center;
+  }
+  
+  [role="progressbar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+    mask: radial-gradient(at 50% 100%, white 50%, transparent 50.5%);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(at 50% 100%, #0000 65%, #000 65.5%);
+    -webkit-mask-mode: alpha;
+  }
+  
+  [role="progressbar"]::after {
+    counter-reset: percentage var(--value);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--primary);
+    background: none;
+  }
+
+  .contenido-convalida-conferencias{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.inputs{
+    width: 427.21px;
+    margin-bottom: 34px;
+}
+.inputs input{
+    width: 100%;
+    height: 42px;
+    border: none;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+.card-inscrito{
+    display: flex;
+    justify-content: space-between;
+}
+.card-inscrito-texto{
+    max-width: 187px;
+    color: #353535;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 15px;
+}
+.card-inscrito-texto img{
+    margin-right: 10px;
+}
+.btnMaterial {
+    background-color: rgb(0 130 58 / 72%);
+    color: #fff;
+    max-height: 39px;
+    max-width: 144px;
+    width: fit-content;
+    margin: 10px;
+    border-color: rgb(0 130 58 / 72%);
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 8px 20px;
+    text-transform: uppercase;
+}
+.card-body-inscrito{
+    padding-bottom: 0px !important;
+}
+.seccion-titulo-alumno{
+    width: 600px;
+    border-bottom: 1px solid #E8E8E8;
+    margin: 15px;
+}
+.seccion-titulo-alumno h3{
+    color: #7B7B7B;
+    font-size: 20px;
+}
+.inscribirme-ahora{
+    margin: auto;
+    padding: 10px 40px;
+    border-radius: 5px;
+    background-color: #00823A;
+    color: #ffff;
+}
+.devolverCadena{
+    color:#42B247;
+    font-weight: 500;
+    text-align: center;
+}
+.file{
+    display: flex;
+    align-items: baseline;
+}
+.file input{
+    display: none;
+}
+.file label{
+    background-color: #F5F5F5;
+    height: 42px;
+    width: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.file img{
+    margin-right: 5px;
+}
+.file h3{
+    font-size: 12px;
+    color: #898989;
+    margin-left: 13px;
+}
+.btnEnviar{
+    background-color: rgb(0 130 58 / 72%);
+    max-width: 210px;
+    color: #ffff;
+    border-radius: 5px;
 }

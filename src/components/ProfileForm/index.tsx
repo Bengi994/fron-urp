@@ -22,6 +22,7 @@ const getProfileSchema = (isEmployee: boolean) => yup.object({
 
 export const ProfileForm = () => {
     const { user, isEmployee } = useResponsivePageContext();
+    console.log(user)
     const { update } = useProfile();
 
     const { register, handleSubmit, formState: { errors }, setValue  } = useForm<User>({

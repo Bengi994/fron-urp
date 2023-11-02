@@ -5,7 +5,19 @@ import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import CatalogModalConfirm from "../../components/CatalogModalConfirmation";
 
-//@ts-ignore
+function formatearFecha(fechaOriginal) {
+  const fecha = new Date(fechaOriginal);
+  const dia = fecha.getDate();
+  const mes = fecha.getMonth() + 1;
+  const anio = fecha.getFullYear();
+
+  // Asegurarnos de que el día y el mes tengan dos dígitos
+  const diaFormateado = dia < 10 ? `0${dia}` : dia;
+  const mesFormateado = mes < 10 ? `0${mes}` : mes;
+
+  return `${diaFormateado}/${mesFormateado}/${anio}`;
+}
+
 const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
   const { catalogs, removeCatalog, enabledCatalog } = useCatalogs();
   const handleRemoveCatalog = async (catalogId: string) => {
@@ -21,6 +33,8 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
 
   const aprobar = "Aprobar";
   const rechazar = "Rechazar";
+
+  const fechaFormateada = formatearFecha(Date.parse(catalogo?.fecha));
   return (
     <>
       {estado && (
@@ -42,31 +56,31 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
               </div>
               <div className="seccion-tema-descripcion">
                 <h5>Descripción: </h5>
-                <p>{catalogo.descripcion}</p>
+                <p>{catalogo.descripcion === null ? "No establecida" : catalogo.descripcion}</p>
               </div>
               <div className="seccion">
                 <h5>Expositor: </h5>
-                <p>{catalogo.expositor}</p>
+                <p>{catalogo.expositor === null ? "No establecido" : catalogo.expositor}</p>
               </div>
               <div className="seccion">
                 <h5>Dirigido a: </h5>
-                <p>{catalogo.dirigido}</p>
+                <p>{catalogo.dirigido === null ? "No establecido" : catalogo.dirigido}</p>
               </div>
               <div className="seccion">
                 <h5>Solicitado por: </h5>
-                <p>{catalogo.solicitado_por}</p>
+                <p>{catalogo.solicitado_por === null ? "No establecido" : catalogo.solicitado_por}</p>
               </div>
               <div className="seccion">
                 <h5>Salón: </h5>
-                <p>{catalogo.salon}</p>
+                <p>{catalogo.salon === null ? "No establecido" : catalogo.salon}</p>
               </div>
               <div className="seccion">
                 <h5>Fecha: </h5>
-                <p>{catalogo.fecha}</p>
+                <p>{fechaFormateada === null ? "No establecida" : fechaFormateada}</p>
               </div>
               <div className="seccion">
                 <h5>Hora: </h5>
-                <p>{catalogo.hora === null ? "" : catalogo.hora.slice(0, 5)}</p>
+                <p>{catalogo.hora === null ? "No establecida" : catalogo.hora.slice(0, 5)}</p>
               </div>
 
               <div className="seccion-botones">

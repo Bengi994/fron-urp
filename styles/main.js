@@ -7,3 +7,9 @@ function btn_agregar(){
       });
 }
 
+// let archivo = document.querySelector('#archivo');
+// archivo.addEventListener('change', () => {
+//     document.querySelector('#nombre').innerHTML =
+//       archivo.files[0].name;
+// });
+

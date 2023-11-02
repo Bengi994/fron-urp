@@ -1,18 +1,19 @@
 import { ResponsivePage } from "../components/ResponsivePage";
+import Link from "next/link";
 import { useCatalogs } from "../hooks/catalog/useCatalogs";
-import { CatalogCard } from "../components/CatalogCard";
+import { CatalogCardInscrito } from "../components/CatalogCardInscrito";
 
 const VerCatalogo = () => {
   const { catalogs } = useCatalogs(); // Usar "catalogs" en lugar de "catalogsClient"
-  console.log(catalogs);
 
   // Filtrar las conferencias disponibles
-  const conferenciasDisponibles = catalogs.filter((catalog) => catalog.disponible);
+  const misConferencias = catalogs.filter((catalog) => catalog.miconf);
 
   return (
     <ResponsivePage>
-      <div className="container mt-3 mb-4">
+      <div className="container mt-3 mb-4 header-mis-conferencias">
         <h2>Próximas conferencias disponibles</h2>
+        <Link href="/mis-conferencias"><img src="\icon-forward.svg" alt="search" /></Link>
       </div>
 
       <div className="container contenedor-proximos">
@@ -26,8 +27,8 @@ const VerCatalogo = () => {
             marginTop: "20px",
           }}
         >
-          {conferenciasDisponibles.map((catalog) => (
-            <CatalogCard key={catalog.id} catalog={catalog} /> // Usar "catalog.id" como clave
+          {misConferencias.map((catalog) => (
+            <CatalogCardInscrito key={catalog.id} catalog={catalog} /> // Usar "catalog.id" como clave
           ))}
         </div>
       </div>

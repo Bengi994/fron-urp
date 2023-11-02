@@ -3,7 +3,6 @@ import {useCatalogs} from "../hooks/catalog/useCatalogs";
 import {CatalogCard} from "../components/CatalogCard";
 
 const VerCatalogo = () => {
-    {/*@ts-ignore*/}
     const { catalogsClient: catalogs } = useCatalogs();
 
     return (
