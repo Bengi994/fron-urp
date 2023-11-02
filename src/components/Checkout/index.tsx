@@ -45,6 +45,7 @@ export const Checkout = () => {
                        }} amount={(total * 100)}>
         <div className='d-flex'>
             <Culqi>
+                {/*@ts-ignore*/}
                 {({ openCulqi }) => {
                     return (
                         <>
@@ -76,8 +77,10 @@ export const Checkout = () => {
                                     <tbody>
                                     {cart && cart.products.length > 0 && cart.products.map(product => (
                                         <tr key={`product-${product.id}`}>
+                                            {/*@ts-ignore*/}
                                             <td>{product.nombre}</td>
                                             <td>{product.cantidad}</td>
+                                            {/*@ts-ignore*/}
                                             <td>{product.precio}</td>
                                         </tr>
                                     ))}

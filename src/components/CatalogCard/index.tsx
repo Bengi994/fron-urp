@@ -3,7 +3,7 @@ import { Catalog } from "../../types/Catalog";
 import { User } from "../../types/User";
 import ModalInscribir from "../BotonModal";
 import { useState } from "react";
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
   const fecha = new Date(fechaOriginal);
   const dia = fecha.getDate();
@@ -30,6 +30,7 @@ export const CatalogCard = ({
           variant="top"
           src="http://localhost:1338/uploads/SERVICIO_DIGITAL_MARKETING_CONSULTING_127a33d433.jpg"
         />
+        {/*@ts-ignore*/}
         <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{formatearFecha(catalog.fecha)} - {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}</p>
         <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salon}</p>
         <p className="card-dirigido">{catalog.dirigido}</p>

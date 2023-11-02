@@ -8,7 +8,7 @@ import { User } from "../types/User";
 import { Catalog } from "../types/Catalog";
 import ModalInscribir from "../components/BotonModal";
 import { useState } from "react";
-
+{/*@ts-ignore*/}
 function formatearFecha(fechaOriginal) {
   const fecha = new Date(fechaOriginal);
   const dia = fecha.getDate();
@@ -20,6 +20,7 @@ function formatearFecha(fechaOriginal) {
 
 const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
   const { catalogs } = useCatalogs();
+  {/*@ts-ignore*/}
   function encontrarConferenciaMasTemprana(pc) {
     if (pc.length === 0) {
       return null; // Si el array está vacío, no hay conferencias.

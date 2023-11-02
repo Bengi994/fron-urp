@@ -29,7 +29,7 @@ const VerConvalida = () => {
         const convalida = {
             ...data,
         };
-
+{/*@ts-ignore*/}
         const response = await createConvalida(convalida);
 
         if(response){

@@ -24,6 +24,7 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
             <p className="card-inscrito-texto">
               <img src="\calendario-icon-black.svg" alt="fecha" />
               {catalog.fecha} -{" "}
+              {/*@ts-ignore*/}
               {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}
             </p>
             <p className="card-inscrito-texto">

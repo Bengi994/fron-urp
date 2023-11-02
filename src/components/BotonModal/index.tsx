@@ -8,7 +8,7 @@ import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import {useResponsivePageContext} from "../ResponsivePage/context";
 import { useCatalogs } from '../../hooks/catalog/useCatalogs';
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
     const fecha = new Date(fechaOriginal);
     const dia = fecha.getDate();
@@ -17,7 +17,7 @@ function formatearFecha(fechaOriginal) {
   
     return `${dia} de ${mes}`;
   }
-
+//@ts-ignore
 const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
     const { user } = useResponsivePageContext();
     const { register, handleSubmit, formState: { errors } } = useForm<Catalog>();

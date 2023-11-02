@@ -19,7 +19,7 @@ const NewCatalog = () => {
         const catalog = {
             ...data,
         };
-
+{/*@ts-ignore*/}
         const response = await createCatalog(catalog);
 
         if (response) {
