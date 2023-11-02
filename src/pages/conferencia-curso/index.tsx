@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { Catalog } from "../../types/Catalog";
+//@ts-ignore
 import { PythonShell } from "python-shell";
 import { ResponsivePage } from "../../components/ResponsivePage";
 
@@ -13,15 +13,10 @@ const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
 
     <ResponsivePage>
       
-      <button>escanear</button>
       <div id="your-qr-result"></div>
       <div className="my-qr-reader-cont">
         <div id="my-qr-reader" className="my-qr-reader"></div>
       </div>
-      <script src="./escaneo.js"></script>
-        <script src="sweetalert2.min.js"></script>
-        <link rel="stylesheet" href="sweetalert2.min.css" />
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/html5-qrcode"></script>
         
     </ResponsivePage>
@@ -31,37 +26,32 @@ const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
 };
 
 export default VerCatalogo;
-=======
-import { useCatalogs } from "../../hooks/catalog/useCatalogs";
-import { Catalog } from "../../types/Catalog";
-import { PythonShell } from "python-shell";
-import { ResponsivePage } from "../../components/ResponsivePage";
+function domReady(fn: () => void): void {
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+      setTimeout(fn, 1);
+  } else {
+      document.addEventListener("DOMContentLoaded", fn);
+  }
+}
 
-const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
-  const { catalogs } = useCatalogs();
+domReady(() => {
+  const myqr = document.getElementById('your-qr-result');
+  let lastResult: string | undefined, countResults = 0;
 
-
-
-  return (
-
-    <ResponsivePage>
-      
-      <button>escanear</button>
-      <div id="your-qr-result"></div>
-      <div className="my-qr-reader-cont">
-        <div id="my-qr-reader" className="my-qr-reader"></div>
-      </div>
-      <script src="./escaneo.js"></script>
-        <script src="sweetalert2.min.js"></script>
-        <link rel="stylesheet" href="sweetalert2.min.css" />
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://unpkg.com/html5-qrcode"></script>
-        
-    </ResponsivePage>
-
-   
+  const onScanSuccess = (decodeText: string, decodeResult: any) => {
+      if (decodeText !== lastResult) {
+          ++countResults;
+          lastResult = decodeText;
+          alert("Su QR es: " + decodeText);
+          
+          if (myqr) {
+              myqr.innerHTML = ` you scan ${countResults} : ${decodeText} `;
+          }
+      }
+  }
+//@ts-ignore
+  const htmlscanner = new (Html5QrcodeScanner as any)(
+      "my-qr-reader", { fps: 10, qrbox: 250 }
   );
-};
-
-export default VerCatalogo;
->>>>>>> 9bfaa0b02cc4c0646728238ae79339524b722456
+  htmlscanner.render(onScanSuccess);
+});
