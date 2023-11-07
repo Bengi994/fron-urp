@@ -5,8 +5,15 @@ import { api } from "../../utils/api";
 export const useCatalogs = () => {
   const [catalogs, setCatalogs] = useState<Catalog[]>([]);
 
+  const [SalonConferencia, setSalonConferencia] = useState<{ id: string; attributes:{nombre: string}; }[]>([]);
+
+  const getSalonNombre = (salonId: string) => {
+    const salon = SalonConferencia.find(salon => salon.id === salonId);
+    return salon ? salon.attributes.nombre : '';
+  };
+
   const getCatalogs = async () => {
-    const { data: { data: dataRaw } } = await api.get('/catologos');
+    const { data: { data: dataRaw } } = await api.get('/catologos?populate=*');
 
     const catalogsMapping = dataRaw.map(({ id, attributes }: { id: number; attributes: any }) => ({
       ...attributes,
@@ -63,5 +70,6 @@ export const useCatalogs = () => {
     enabledCatalog,
     myCatalog,
     getCatalogId,
+    getSalonNombre,
   };
 };

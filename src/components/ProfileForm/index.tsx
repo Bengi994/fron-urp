@@ -27,6 +27,7 @@ export const ProfileForm = () => {
 
     const { register, handleSubmit, formState: { errors }, setValue  } = useForm<User>({
         resolver: yupResolver(getProfileSchema(isEmployee)),
+        /*@ts-ignore*/
         defaultValues: user,
     });
 

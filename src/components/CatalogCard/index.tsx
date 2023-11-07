@@ -32,7 +32,7 @@ export const CatalogCard = ({
         />
         {/*@ts-ignore*/}
         <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{formatearFecha(catalog.fecha)} - {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}</p>
-        <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salon}</p>
+        <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salons}</p>
         <p className="card-dirigido">{catalog.dirigido}</p>
       </div>
 
@@ -65,6 +65,7 @@ export const CatalogCard = ({
           </div>
         )}
       </div>
+      {/*@ts-ignore*/}
       <ModalInscribir estado={estadoModal}
           cambiarEstado={cambiarEstadoModal}
           catalogo={catalog} 

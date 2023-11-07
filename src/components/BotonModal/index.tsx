@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Catalog } from "../../types/Catalog";
@@ -130,6 +130,114 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                 </div>
               </div>
             )}
+        </>
+  )
+};
+export default ModalInscribir;
+*/
+
+import React, { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import { Catalog } from "../../types/Catalog";
+import { useCatalog } from "../../hooks/catalog/useCatalog";
+import ModalQR from '../ModalQR';
+import { useForm } from "react-hook-form";
+import { useResponsivePageContext } from '../ResponsivePage/context';
+import { useUsers } from '../../hooks/user/useUsers';
+
+
+const ModalInscribir = ({ catalog }: { catalog: Catalog }) => {
+    const  {user}  = useResponsivePageContext();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const {updateUser} = useUsers();
+    const {usuario, getUser} = useUsers();
+    getUser(user?.id);
+    // //hola(usuario) 
+
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm<Catalog>();
+
+    const { updateCatalog } = useCatalog();
+    const handleOnSubmit = () => {
+      alert("¡Ingreso a la conferencia exitoso!")
+      if (user?.conferencias?.includes(catalog)){
+        //hola("El usuario ya se habia inscrito a esta conferencia");
+      }
+      else{
+        if (user && !user.conferencias) {
+          user.conferencias = [];
+        }
+        if (user) {
+          user?.conferencias?.push(catalog);
+          updateUser(user);
+        }
+      }
+      //hola(user?.conferencias);
+    }
+    
+  return (
+    <>
+            <button className="btnInscribir" onClick={handleShow}>Inscribirse</button>{' '}
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title className="lblinscribNow">INSCRÍBETE AHORA</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="containergrupoLabelCaja">
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Conferencia:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={catalog?.tema_conferencia}></input>
+                        </div>
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Fecha y hora:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={`${catalog?.fecha} - ${catalog?.hora}`}></input>
+                        </div>
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Lugar:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={catalog?.salons}></input>
+                        </div>
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Dirigido:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={catalog?.dirigido}></input>
+                        </div>
+                    </div>
+                    <p className="etiqInfoAlumno">Información del alumno</p>
+                    <div className="containergrupoLabelCaja">
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Código:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={user?.codigo}></input>
+                        </div>
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Nombres:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={user?.nombre}></input>
+                        <div className="grupoLabelCaja">
+                        </div>
+                        <div className="grupoLabelCaja">
+                            <label className="etiqCaja" htmlFor="textCaja">Apellidos:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={user?.apellido}></input>
+                        </div>
+                            <label className="etiqCaja" htmlFor="textCaja">Escuela:</label>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={user?.escuela}></input>
+                        </div>
+                    </div>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="btnCerrarModal btnBoton" onClick={handleClose}>Cerrar</button>
+                    <button id="btnInscribirseConf" className="btnCerrarModal btnBoton" onClick={handleOnSubmit}>Inscribirse</button>
+                    <ModalQR/>
+                </Modal.Footer>
+            </Modal>
         </>
   )
 };

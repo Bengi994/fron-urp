@@ -34,6 +34,7 @@ const getUserSchema = (isNew: boolean) => {
 export const UserModal = ({ show, handleClose, isNew, onSubmit, user }: { show: boolean; handleClose: () => void; isNew: boolean; onSubmit: (usuario: any, isNew: boolean) => void; user?: User }) => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<User>({
         resolver: yupResolver(getUserSchema(isNew)),
+        /*@ts-ignore*/
         defaultValues: user,
     });
     const { roles } = useUser();

@@ -29,7 +29,7 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
             </p>
             <p className="card-inscrito-texto">
               <img src="\salon-icon-black.svg" alt="salon" />
-              {catalog.salon}
+              {catalog.salons}
             </p>
           </div>
           <div className="card-inscrito-seccion-boton">

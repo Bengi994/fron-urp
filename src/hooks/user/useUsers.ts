@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 
 export const useUsers = () => {
     const [users, setUsers] = useState<User[]>([]);
+    const [usuario, setUsuario] = useState<User>();
 
     const createUser = async (data: User): Promise<boolean> => {
          const response = await api.post('/auth/local/register', {
@@ -30,6 +31,7 @@ export const useUsers = () => {
          return response.status === 200;
     };
 
+    //actualizar usuario por su id
     const updateUser = async (data: User): Promise<boolean> => {
         const response = await api.put(`/users/${data.id}`, {
             nombre: data.nombre,
@@ -88,6 +90,17 @@ export const useUsers = () => {
         setUsers(data);
     };
 
+    //obteniendo usuario por su id esto agregue de giancarlo
+    const getUser = async (userId: any) => {
+        try{
+            const { data } = await api.get(`/users/${userId}?populate=*`);
+            setUsuario(data);
+        }
+        catch(e){
+            console.log(e)
+        }
+    };
+
     useEffect(() => {
         getUsers();
     }, []);
@@ -98,5 +111,6 @@ export const useUsers = () => {
         updateUser,
         removeUser,
         enableUser,
+        getUser, usuario
     };
 };

@@ -97,6 +97,7 @@ const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
                   Inscribirse
                 </a>
                 <ModalInscribir
+                /*@ts-ignore*/
                   estado={estadoModal}
                   cambiarEstado={cambiarEstadoModal}
                   catalogo={cmt}

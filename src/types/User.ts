@@ -1,4 +1,5 @@
 import {Role} from "./Role";
+import { Catalog } from "./Catalog";
 
 export type User = {
     id: number;
@@ -13,4 +14,6 @@ export type User = {
     zona: string;
     codigo: string;
     escuela: string;
+    conferencias: Catalog[];
+    
 };
