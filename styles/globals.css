@@ -376,6 +376,10 @@ body .form-control:focus {
     color: #fff;
     z-index: 9;
 }
+.cart-conferencia-proxima .btnInscribir{
+    position: inherit !important;
+   
+}
 .btnInscribir {
     position: absolute;
     background-color: rgb(0 130 58 / 72%);

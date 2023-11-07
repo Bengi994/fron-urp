@@ -81,21 +81,13 @@ const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
                 </h6>
               </div>
             ) : (
-              <div>
+              <div className="cart-conferencia-proxima">
                 <h6 className="devolverCadena">
                   {cmt?.tema_conferencia}
                   <br />
                   {fechaFormateada}
                 </h6>
-                <a
-                  style={{ color: "#42B247", cursor: "pointer", display: "flex", justifyContent: "center"}}
-                  onClick={() => {
-                    cambiarEstadoModal(!estadoModal);
-                    setCatalogElement(cmt);
-                  }}
-                >
-                  Inscribirse
-                </a>
+               
                 <ModalInscribir
                 /*@ts-ignore*/
                   estado={estadoModal}
