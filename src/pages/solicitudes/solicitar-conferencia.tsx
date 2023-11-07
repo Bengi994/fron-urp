@@ -129,7 +129,7 @@ const NewCatalog = () => {
                 <hr />
                 <div className=''>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="form-group mb-3">
                         <Form.Label>Foto</Form.Label>
                         <Container>
                             <Row>
@@ -143,7 +143,7 @@ const NewCatalog = () => {
 
 
                     <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>
-                        <Form.Group className="mb-3">
+                        <Form.Group className="form-group mb-3">
                             <Form.Label>Tema de la conferencia</Form.Label>
                             <Form.Control type="text" {...register("tema_conferencia")} />
                             {errors.tema_conferencia && (
@@ -152,7 +152,7 @@ const NewCatalog = () => {
                                 </Form.Text>
                             )}
                         </Form.Group>
-                        <Form.Group className="mb-3">
+                        <Form.Group className="form-group mb-3">
                             <Form.Label>Descripcion</Form.Label>
                             <Form.Control type="text" {...register("descripcion")} />
                             {errors.descripcion && (
@@ -161,7 +161,7 @@ const NewCatalog = () => {
                                 </Form.Text>
                             )}
                         </Form.Group>
-                        <Form.Group className="mb-3">
+                        <Form.Group className="form-group mb-3">
                             <Form.Label>Expositor</Form.Label>
                             <Form.Control type="text" {...register("expositor")} />
                             {errors.expositor && (
@@ -171,9 +171,10 @@ const NewCatalog = () => {
                             )}
                         </Form.Group>
 
-                        <Form.Group className="mb-3">
+                        <Form.Group className="form-group mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }} >Fecha</Form.Label>
                             <DatePicker 
+                                className="date-picker"
                                 selected={selectedDate} 
                                 onChange={(date: Date) => setSelectedDate(date)} 
                                 dateFormat="dd/MM/yyyy" />

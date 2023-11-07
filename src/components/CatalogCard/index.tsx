@@ -32,11 +32,12 @@ export const CatalogCard = ({
             <div className="cont-img">
               <Card.Img
                 variant="top"
-                src={"https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/uploads/mobile_app_design_fundamentals_the_difference_between_UI_and_UX_2f1b573866.webp"}
+                
+                src={"https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/uploads/mobile_app_design_fundamentals_the_difference_between_UI_and_UX_957d1720c0.webp"}
               />
               {/*@ts-ignore*/}
               <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{formatearFecha(catalog.fecha)} - {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}</p>
-        <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salons.data[0].attributes.nombre}</p>
+              <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salons.data[0].attributes.nombre}</p>
               <p className="card-dirigido">{catalog.dirigido}</p>
             </div>
       

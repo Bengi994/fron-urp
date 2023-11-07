@@ -841,3 +841,26 @@ button{
     color: #ffff;
     border-radius: 5px;
 }
+
+.form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .date-picker {
+    border-color: green;
+  }
+
+  .custom-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .custom-form-label {
+    font-weight: bold;
+    color: blue;
+  }
+  
+  .custom-select {
+    border-color: green;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
