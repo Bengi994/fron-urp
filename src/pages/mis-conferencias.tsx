@@ -100,7 +100,7 @@ const VerCatalogo = ({ catalog }: { catalog: Catalog }) => {
                 /*@ts-ignore*/
                   estado={estadoModal}
                   cambiarEstado={cambiarEstadoModal}
-                  catalogo={cmt}
+                  catalog={cmt}
                   setCatalogo={setCatalogElement}
                 />
               </div>
