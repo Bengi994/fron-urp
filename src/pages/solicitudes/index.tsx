@@ -38,15 +38,18 @@ const Catalogo = () => {
                   </tr>
                   </thead>
                   <tbody>
-                  {catalogs.length > 0 && catalogs.map(catalog => (
+                  {catalogs.length > 0 && catalogs.map(catalog => {
+                    console.log(catalog);
+                    return(
+                              
                       <tr key={`catalog-${catalog.id}`}>
                           <td>{catalog.id}</td>
                           <td>{catalog.tema_conferencia}</td>
                           <td>{catalog.fecha ? new Date(catalog.fecha).toLocaleDateString('es-PE',{timeZone: 'UTC'}) : ""}</td>
-                          <td>{catalog.descripcion}</td>
+                          <td>{catalog?.salons&& catalog.salons.data.length>0? catalog?.salons.data?.[0].attributes.nombre: ""}</td>
                           <td>{catalog.disponible ? 'Aprobado' : 'Rechazado'}</td>
                       </tr>
-                  ))}
+                  )})}
                   </tbody>
               </table>
           </div>

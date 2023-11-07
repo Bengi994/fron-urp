@@ -1,9 +1,11 @@
 import { ResponsivePage } from "../components/ResponsivePage";
 import { useCatalogs } from "../hooks/catalog/useCatalogs";
 import { CatalogCard } from "../components/CatalogCard";
+import { useResponsivePageContext } from "../components/ResponsivePage/context";
 
 const VerCatalogo = () => {
   const { catalogs } = useCatalogs(); // Usar "catalogs" en lugar de "catalogsClient"
+  const {user} = useResponsivePageContext();
   console.log(catalogs);
 
   // Filtrar las conferencias disponibles

@@ -2,7 +2,7 @@ import { Button, Card } from "react-bootstrap";
 import { Catalog } from "../../types/Catalog";
 import { User } from "../../types/User";
 import ModalInscribir from "../BotonModal";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 //@ts-ignore
 function formatearFecha(fechaOriginal) {
   const fecha = new Date(fechaOriginal);
@@ -23,6 +23,10 @@ export const CatalogCard = ({
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [catalogElement, setCatalogElement] = useState<Catalog>();
 
+  useEffect(()=>{
+    console.log(catalog);
+  },[])
+
   return (
     <Card key={`catalog-${catalog.id}`}>
       <div className="cont-img">
@@ -32,7 +36,7 @@ export const CatalogCard = ({
         />
         {/*@ts-ignore*/}
         <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{formatearFecha(catalog.fecha)} - {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}</p>
-        <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salons}</p>
+        <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salons.data[0].attributes.nombre}</p>
         <p className="card-dirigido">{catalog.dirigido}</p>
       </div>
 
@@ -65,11 +69,9 @@ export const CatalogCard = ({
           </div>
         )}
       </div>
-      {/*@ts-ignore*/}
-      <ModalInscribir estado={estadoModal}
-          cambiarEstado={cambiarEstadoModal}
-          catalogo={catalog} 
-          setCatalogo={setCatalogElement}
+      
+      <ModalInscribir catalog={catalog} 
+          
           />
     </Card>
   );

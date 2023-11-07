@@ -18,5 +18,5 @@ export type Catalog = {
     nombres: string,
       apellidos: string
   ];
-  salons: string;
+  salons: any;
 };

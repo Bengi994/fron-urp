@@ -136,7 +136,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
 export default ModalInscribir;
 */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Catalog } from "../../types/Catalog";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
@@ -180,6 +180,10 @@ const ModalInscribir = ({ catalog }: { catalog: Catalog }) => {
       //hola(user?.conferencias);
     }
     
+  useEffect(()=>{
+    console.log(catalog);
+  },[])
+
   return (
     <>
             <button className="btnInscribir" onClick={handleShow}>Inscribirse</button>{' '}
@@ -193,7 +197,7 @@ const ModalInscribir = ({ catalog }: { catalog: Catalog }) => {
                     <Modal.Title className="lblinscribNow">INSCRÍBETE AHORA</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="containergrupoLabelCaja">
+                    <div >
                         <div className="grupoLabelCaja">
                             <label className="etiqCaja" htmlFor="textCaja">Conferencia:</label>
                             <input className="textCaja" type="text" readOnly disabled placeholder={catalog?.tema_conferencia}></input>
@@ -204,7 +208,7 @@ const ModalInscribir = ({ catalog }: { catalog: Catalog }) => {
                         </div>
                         <div className="grupoLabelCaja">
                             <label className="etiqCaja" htmlFor="textCaja">Lugar:</label>
-                            <input className="textCaja" type="text" readOnly disabled placeholder={catalog?.salons}></input>
+                            <input className="textCaja" type="text" readOnly disabled placeholder={catalog?.salons.data[0].attributes.nombre}></input>
                         </div>
                         <div className="grupoLabelCaja">
                             <label className="etiqCaja" htmlFor="textCaja">Dirigido:</label>
@@ -212,7 +216,7 @@ const ModalInscribir = ({ catalog }: { catalog: Catalog }) => {
                         </div>
                     </div>
                     <p className="etiqInfoAlumno">Información del alumno</p>
-                    <div className="containergrupoLabelCaja">
+                    <div >
                         <div className="grupoLabelCaja">
                             <label className="etiqCaja" htmlFor="textCaja">Código:</label>
                             <input className="textCaja" type="text" readOnly disabled placeholder={user?.codigo}></input>
