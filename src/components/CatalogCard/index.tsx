@@ -27,52 +27,26 @@ export const CatalogCard = ({
     console.log(catalog);
   },[])
 
-  return (
-    <Card key={`catalog-${catalog.id}`}>
-      <div className="cont-img">
-        <Card.Img
-          variant="top"
-          src="http://localhost:1338/uploads/SERVICIO_DIGITAL_MARKETING_CONSULTING_127a33d433.jpg"
-        />
-        {/*@ts-ignore*/}
-        <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{formatearFecha(catalog.fecha)} - {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}</p>
+        return (
+          <Card key={`catalog-${catalog.id}`}>
+            <div className="cont-img">
+              <Card.Img
+                variant="top"
+                src={"https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/uploads/mobile_app_design_fundamentals_the_difference_between_UI_and_UX_2f1b573866.webp"}
+              />
+              {/*@ts-ignore*/}
+              <p className="expositor-card card-fecha"><img src="\calendario-icon.svg" alt="fecha" />{formatearFecha(catalog.fecha)} - {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}</p>
         <p className="expositor-card card-salon"><img src="\salon-icon.svg" alt="salon" />{catalog.salons.data[0].attributes.nombre}</p>
-        <p className="card-dirigido">{catalog.dirigido}</p>
-      </div>
-
-      <Card.Body>
-        <Card.Title>{catalog.tema_conferencia}</Card.Title>
-        <p className="nombre-expositor">Dirigido por: {catalog.expositor}</p>
-
-        <p className="descripcion-card">{catalog.descripcion}</p>
-      </Card.Body>
-      <div>
-        {catalog.miconf === true ? (
-          <div>
-            <Button
-                      className="btnInscribir"
-                    >
-                      Inscrito
-                    </Button>
-          </div>
-        ) : (
-          <div>
-            <Button
-                      className="btnInscribir"
-                      onClick={() => {
-                        cambiarEstadoModal(!estadoModal);
-                        setCatalogElement(catalog);
-                      }}
-                    >
-                      Inscribirse
-                    </Button>
-          </div>
-        )}
-      </div>
+              <p className="card-dirigido">{catalog.dirigido}</p>
+            </div>
       
-      <ModalInscribir catalog={catalog} 
-          
-          />
-    </Card>
-  );
+            <Card.Body>
+              <Card.Title>{catalog.tema_conferencia}</Card.Title>
+              <p className="nombre-expositor">Dirigido por: {catalog.expositor}</p>
+      
+              <p className="descripcion-card">{catalog.descripcion}</p>
+              <ModalInscribir catalog={catalog} />
+            </Card.Body>
+          </Card>
+        );
 };
